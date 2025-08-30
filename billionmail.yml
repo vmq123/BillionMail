@@ -1,5 +1,4 @@
-name: billionmail
-
+# name: billionmail
 services:
     pgsql-billionmail:
       image: postgres:17.4-alpine
