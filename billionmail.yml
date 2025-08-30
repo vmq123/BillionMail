@@ -204,9 +204,9 @@ services:
         traefik.http.routers.billionmail-https.entrypoints: https
         traefik.http.routers.billionmail-https.rule: Host(`mail.vms88.com`)
         traefik.http.routers.billionmail-https.service: billionmail
-        traefik.http.routers.billionmail-https.tls: "true"
-        traefik.http.routers.billionmail-https.tls.certresolver: le
-        traefik.http.services.billionmail.loadbalancer.server.port: "8080"
+        # traefik.http.routers.billionmail-https.tls: "true"
+        # traefik.http.routers.billionmail-https.tls.certresolver: le
+        # traefik.http.services.billionmail.loadbalancer.server.port: "8080"
       networks:
         # billionmail-network: null
           # aliases:
