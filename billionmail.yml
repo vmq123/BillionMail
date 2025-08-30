@@ -186,14 +186,14 @@ services:
         - TZ=${TZ}
         - FAIL2BAN_INIT=${FAIL2BAN_INIT:-y}
         # - BACKEND: backend:8000
-        - CLIENT_MAX_BODY_SIZE: 50m
+        - CLIENT_MAX_BODY_SIZE="50m"
         # - FRAPPE_SITE_NAME_HEADER: $$host
-        - BILLIONMAIL_SITE_NAME_HEADER: $$host
-        - PROXY_READ_TIMEOUT: "120"
+        - BILLIONMAIL_SITE_NAME_HEADER=$$host
+        - PROXY_READ_TIMEOUT="120"
         # - SOCKETIO: websocket:9000
-        - UPSTREAM_REAL_IP_ADDRESS: 127.0.0.1
-        - UPSTREAM_REAL_IP_HEADER: X-Forwarded-For
-        - UPSTREAM_REAL_IP_RECURSIVE: "off"
+        - UPSTREAM_REAL_IP_ADDRESS="127.0.0.1"
+        - UPSTREAM_REAL_IP_HEADER="X-Forwarded-For"
+        - UPSTREAM_REAL_IP_RECURSIVE="off"
       labels:
         traefik.docker.network: traefik-public
         traefik.enable: "true"
