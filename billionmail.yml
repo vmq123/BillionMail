@@ -15,9 +15,10 @@ services:
       # ports:
       #   - "${SQL_PORT:-127.0.0.1:25432}:5432"
       networks:
-        billionmail-network: null
+        # billionmail-network: null
           # aliases:
           #   - pgsql
+        traefik-public: null
 
     redis-billionmail:
       image: redis:7.4.2-alpine
@@ -35,9 +36,10 @@ services:
       sysctls:
         - net.core.somaxconn=4096
       networks:
-        billionmail-network: null
+        # billionmail-network: null
           # aliases:
           #   - redis
+        traefik-public: null
 
     rspamd-billionmail:
       image: billionmail/rspamd:1.2
@@ -56,9 +58,10 @@ services:
         - ./logs/rspamd:/var/log/rspamd
       restart: always
       networks:
-        billionmail-network: null
+        # billionmail-network: null
           # aliases:
           #   - rspamd
+        traefik-public: null
 
     dovecot-billionmail:
       image: billionmail/dovecot:1.5
@@ -98,7 +101,7 @@ services:
           soft: 20000
           hard: 40000
       networks:
-        billionmail-network: null
+        # billionmail-network: null
           # aliases:
           #   - dovecot
         traefik-public: null
@@ -136,7 +139,7 @@ services:
         - "${SUBMISSION_PORT:-587}:587"
       restart: always
       networks:
-        billionmail-network: null
+        # billionmail-network: null
           # aliases:
           #   - postfix
         traefik-public: null
@@ -169,7 +172,7 @@ services:
         - ROUNDCUBEMAIL_REQUEST_PATH=/roundcube
       restart: always
       networks:
-        billionmail-network: null
+        # billionmail-network: null
           # aliases:
           #   - webmail
         traefik-public: null
@@ -220,14 +223,14 @@ services:
       #   - "${HTTPS_PORT:-443}:${HTTPS_PORT:-443}"
       restart: always
       networks:
-        billionmail-network: null
+        # billionmail-network: null
           # aliases:
           #   - core
         traefik-public: null
 
 networks:
-  billionmail-network:
-    name: billionmail
+  # billionmail-network:
+  #   name: billionmail
   traefik-public:
     name: traefik-public
     external: true
