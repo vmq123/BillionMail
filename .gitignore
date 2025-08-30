@@ -9,7 +9,6 @@ config/*
 temp/
 ssl/*
 bm
-.env
 billionmail.conf
 DBPASS_file.pl
 logs/
