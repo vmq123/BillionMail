@@ -101,6 +101,7 @@ services:
         billionmail-network:
           aliases:
             - dovecot
+        traefik-public: null
 
     postfix-billionmail:
       image: billionmail/postfix:1.6
@@ -138,6 +139,7 @@ services:
         billionmail-network:
           aliases:
             - postfix
+        traefik-public: null
 
 
     webmail-billionmail:
@@ -170,6 +172,7 @@ services:
         billionmail-network:
           aliases:
             - webmail
+        traefik-public: null
 
     core-billionmail:
       image: billionmail/core:4.3.2
@@ -217,20 +220,14 @@ services:
         - "${HTTPS_PORT:-443}:${HTTPS_PORT:-443}"
       restart: always
       networks:
-        traefik-public: null
         billionmail-network:
           aliases:
             - core
+        traefik-public: null
 
 networks:
   billionmail-network:
-    driver: bridge
-    driver_opts:
-      com.docker.network.bridge.name: br-billionmail
-    ipam:
-      driver: default
-      config:
-        - subnet: ${IPV4_NETWORK:-172.66.1}.0/24
+    name: billionmail
   traefik-public:
     name: traefik-public
     external: true
